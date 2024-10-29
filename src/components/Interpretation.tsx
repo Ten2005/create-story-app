@@ -87,15 +87,13 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
             <CardContent>
                 <form onSubmit={handleSubmit}>
                 <Textarea
-                    // value={interpretation}
-                    // onChange={(e) => setInterpretation(e.target.value)}
                     placeholder={`
 考えた物語を入力してください。
 フォームは右下をドラッグして大きさを変えられます。
 
 この絵の中の人は今何を感じ、どうしているのか、この絵の前にはどんなことがあって、この絵の後にはどうなっていくのか、話の筋を付けて話してください。
 およそ200~300字程度の短いもので構いません。`}
-                    className="mb-4"
+                    className="mb-4 min-h-[250px]"
                     value={interpretation}
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInterpretation(e.target.value)}
                 />
