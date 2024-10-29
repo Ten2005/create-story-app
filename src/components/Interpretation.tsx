@@ -13,16 +13,16 @@ interface InterpretationProps {
 
 // Simulated database of TAT images
 const tatImages = [
-    { id: 1, src: "../../public/Fig1.jpg", alt: "図版１" },
-    { id: 2, src: "../../public/Fig2.jpg", alt: "図版２" },
-    { id: 3, src: "../../public/Fig3.jpg", alt: "図版３" },
-    { id: 4, src: "../../public/Fig4.jpg", alt: "図版４" },
-    { id: 5, src: "../../public/Fig5.jpg", alt: "図版５" },
-    { id: 6, src: "../../public/Fig6.jpg", alt: "図版６" },
-    { id: 7, src: "../../public/Fig7.jpg", alt: "図版７" },
-    { id: 8, src: "../../public/Fig8.jpg", alt: "図版８" },
-    { id: 9, src: "../../public/Fig9.jpg", alt: "図版９" },
-    { id: 10, src: "../../public/Fig10.jpg", alt: "図版１０" },
+    { id: 1, src: "/Fig1.jpg", alt: "図版１" },
+    { id: 2, src: "/Fig2.jpg", alt: "図版２" },
+    { id: 3, src: "/Fig3.jpg", alt: "図版３" },
+    { id: 4, src: "/Fig4.jpg", alt: "図版４" },
+    { id: 5, src: "/Fig5.jpg", alt: "図版５" },
+    { id: 6, src: "/Fig6.jpg", alt: "図版６" },
+    { id: 7, src: "/Fig7.jpg", alt: "図版７" },
+    { id: 8, src: "/Fig8.jpg", alt: "図版８" },
+    { id: 9, src: "/Fig9.jpg", alt: "図版９" },
+    { id: 10, src: "/Fig10.jpg", alt: "図版１０" },
 ]
 
 const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) => {
