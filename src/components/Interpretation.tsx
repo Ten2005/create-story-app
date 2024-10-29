@@ -64,7 +64,10 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
         setCurrentImage(currentImage + 1)
         setInterpretation('')
     }
-
+    React.useEffect(() => {
+        // currentImageが変更されたときに画面上部にスクロール
+        window.scrollTo(0, 0);
+    }, [currentImage]);
     return (
         <div className="container mx-auto p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
