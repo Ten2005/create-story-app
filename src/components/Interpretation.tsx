@@ -54,15 +54,17 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
         }
     }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setInterpretations([...interpretations, interpretation])
-        if (currentImage === tatImages.length - 1) {
-            saveAll(e)
-            setState('description')
-        }
-
-        setCurrentImage(currentImage + 1)
-        setInterpretation('')
+        e.preventDefault();
+        setInterpretations(prev => {
+            const newInterpretations = [...prev, interpretation];
+            if (currentImage === tatImages.length - 1) {
+                saveAll(e);
+                setState('description');
+            }
+            return newInterpretations;
+        });
+        setCurrentImage(prev => prev + 1);
+        setInterpretation('');
     }
     React.useEffect(() => {
         window.scrollTo(0, 0);
