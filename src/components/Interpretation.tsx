@@ -26,7 +26,7 @@ const tatImages = [
 
 const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) => {
     const [interpretation, setInterpretation] = React.useState('')
-    const [interpretations, setInterpretations] = React.useState([''])
+    const [interpretations, setInterpretations] = React.useState<string[]>([])
     const [currentImage, setCurrentImage] = React.useState(0)
     const saveAll = async (e: React.FormEvent) => {
         e.preventDefault();
