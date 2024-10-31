@@ -20,7 +20,8 @@ const tatImages = [
     { id: 5, src: "/Fig5.jpg", alt: "図版５" },
     { id: 6, src: "/Fig6.jpg", alt: "図版６" },
     { id: 7, src: "/Fig7.jpg", alt: "図版７" },
-    { id: 8, src: "/Fig8.jpg", alt: "図版８" }
+    { id: 8, src: "/Fig8.jpg", alt: "図版８" },
+    { id: 9, src: "/Fig9.jpg", alt: "図版９" }
 ]
 
 const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) => {
@@ -88,8 +89,10 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
                 <form onSubmit={handleSubmit}>
                 <Textarea
                     placeholder={`
-この絵の中の人は今何を感じ、どうしているのか、この絵の前にはどんなことがあって、この絵の後にはどうなっていくのか、話の筋を付けて話してください。
-およそ200~300字程度の短いもので構いません。`}
+思い浮かんだ物語を自由に作ってください。
+登場人物がどのような状況にいるのか、何を考え、どのような気持ちなのかを想像し、その場面の前後（過去や未来）について自由に語ってください。
+正解はありませんので、ご自身の思った通りに物語を作ってください。
+`}
                     className="mb-4 min-h-[250px]"
                     value={interpretation}
                     onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInterpretation(e.target.value)}
