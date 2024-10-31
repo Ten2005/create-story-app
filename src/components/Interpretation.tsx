@@ -55,11 +55,12 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
     }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setInterpretations([...interpretations, interpretation])
         if (currentImage === tatImages.length - 1) {
             saveAll(e)
             setState('description')
         }
-        setInterpretations([...interpretations, interpretation])
+
         setCurrentImage(currentImage + 1)
         setInterpretation('')
     }
