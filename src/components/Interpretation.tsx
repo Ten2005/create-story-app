@@ -52,11 +52,12 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
             }).catch(error => {
                 console.error('Error', error);
             });
+            setState('description');
         }
 
         setCurrentImage(prev => prev + 1);
         setInterpretation('');
-        setState('description');
+
     }
     React.useEffect(() => {
         window.scrollTo(0, 0);
