@@ -20,9 +20,7 @@ const tatImages = [
     { id: 5, src: "/Fig5.jpg", alt: "図版５" },
     { id: 6, src: "/Fig6.jpg", alt: "図版６" },
     { id: 7, src: "/Fig7.jpg", alt: "図版７" },
-    { id: 8, src: "/Fig8.jpg", alt: "図版８" },
-    { id: 9, src: "/Fig9.jpg", alt: "図版９" },
-    { id: 10, src: "/Fig10.jpg", alt: "図版１０" },
+    { id: 8, src: "/Fig8.jpg", alt: "図版８" }
 ]
 
 const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) => {
@@ -65,7 +63,6 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
         setInterpretation('')
     }
     React.useEffect(() => {
-        // currentImageが変更されたときに画面上部にスクロール
         window.scrollTo(0, 0);
     }, [currentImage]);
     return (
@@ -91,9 +88,6 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
                 <form onSubmit={handleSubmit}>
                 <Textarea
                     placeholder={`
-考えた物語を入力してください。
-フォームは右下をドラッグして大きさを変えられます。
-
 この絵の中の人は今何を感じ、どうしているのか、この絵の前にはどんなことがあって、この絵の後にはどうなっていくのか、話の筋を付けて話してください。
 およそ200~300字程度の短いもので構いません。`}
                     className="mb-4 min-h-[250px]"

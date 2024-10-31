@@ -9,6 +9,7 @@ const App: React.FC = () => {
   // desription or interpretation
   const [state, setState] = React.useState('description')
   const [nickname, setNickname] = React.useState('');
+
   return (
     <>
     <Header />

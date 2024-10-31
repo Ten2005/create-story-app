@@ -45,13 +45,6 @@ return (
     <TabsContent value="account">
         <Card>
         <CardHeader>
-            <CardTitle className="text-start">概要</CardTitle>
-            <CardDescription className="text-start">
-            TAT（Thematic Apperception Test）とは、1943年にマレーとモーガンを中心としたハーバード心理学クリニックのスタッフが作成した性格検査です。別名「主題統覚検査」とも呼ばれます。<br />
-            ある場面が描かれた20枚のカードを提示され、それぞれのカードに対して想像して物語を作る検査方法です
-            </CardDescription>
-        </CardHeader>
-        <CardHeader>
             <CardTitle className="text-start">流れ</CardTitle>
             <CardDescription className="text-start">
             これから色々な人や景色の書かれた絵が表示されます。この絵を見て思い浮かぶ物語を作って、入力してください。<br />
@@ -63,7 +56,7 @@ return (
         <CardHeader>
             <CardTitle className="text-start">注意点</CardTitle>
             <CardDescription className="text-start">
-            特になし
+                ブラウザをリロードすると、入力した内容は消えてしまいます。<br />
             </CardDescription>
         </CardHeader>
         </Card>
