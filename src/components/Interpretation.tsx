@@ -56,6 +56,7 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
 
         setCurrentImage(prev => prev + 1);
         setInterpretation('');
+        setState('description');
     }
     React.useEffect(() => {
         window.scrollTo(0, 0);
