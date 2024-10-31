@@ -28,41 +28,32 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname }) =>
     const [interpretation, setInterpretation] = React.useState('')
     const [interpretations, setInterpretations] = React.useState<string[]>([])
     const [currentImage, setCurrentImage] = React.useState(0)
-    const saveAll = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const baseURL = process.env.NODE_ENV === 'production'
-        ? 'https://artinnovation-6c8774b7024e.herokuapp.com'
-        : 'http://127.0.0.1:8000';
-        try {
-            const response = await fetch(`${baseURL}/saveTATData`, {
+        setInterpretations([...interpretations, interpretation]);
+        if (currentImage === tatImages.length - 1) {
+            const baseURL = process.env.NODE_ENV === 'production'
+                ? 'https://artinnovation-6c8774b7024e.herokuapp.com'
+                : 'http://127.0.0.1:8000';
+            fetch(`${baseURL}/saveTATData`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     nickname: nickname,
-                    interpretations: interpretations,
+                    interpretations: [...interpretations, interpretation],
                 }),
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('Success:', response);
+            }).catch(error => {
+                console.error('Error', error);
             });
-
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
-            console.log('Success:', response);
-        } catch (error) {
-            console.error('Error', error);
         }
-    }
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setInterpretations(prev => {
-            const newInterpretations = [...prev, interpretation];
-            if (currentImage === tatImages.length - 1) {
-                saveAll(e);
-                setState('description');
-            }
-            return newInterpretations;
-        });
+
         setCurrentImage(prev => prev + 1);
         setInterpretation('');
     }
