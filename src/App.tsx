@@ -9,10 +9,15 @@ const App: React.FC = () => {
   // desription or interpretation
   const [state, setState] = React.useState('description')
   const [nickname, setNickname] = React.useState('');
+  const [isOriginal, setIsOriginal] = React.useState(false);
 
   return (
     <>
-    <Header />
+    <Header
+    state={state}
+    isOriginal={isOriginal}
+    setIsOriginal={setIsOriginal}
+    />
     {state === 'description'
     && <Description
     setState={setState}
@@ -24,7 +29,8 @@ const App: React.FC = () => {
     && <Interpretation
     setState={setState}
     nickname={nickname}
-    setNickname={setNickname}
+    isOriginal={isOriginal}
+
     />
     }
     </>
