@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ state,isOriginal,setIsOriginal }) => {
             onClick={() => {
                 setIsOriginal(!isOriginal)
             }}
-            className='my-auto bg-white py-0 px-1'
+            className='my-auto bg-white py-0 px-1 bg-opacity-0'
             variant="link"
             >
             {isOriginal
