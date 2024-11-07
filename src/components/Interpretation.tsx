@@ -66,7 +66,7 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname,isOri
             }).catch(error => {
                 console.error('Error', error);
             });
-            setState('description');
+            setState('end');
         }
 
         setCurrentImage(prev => prev + 1);

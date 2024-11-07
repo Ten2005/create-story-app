@@ -39,7 +39,7 @@ const Description: React.FC<DescriptionProps> = ({ setState,nickname,setNickname
 return (
     <Tabs defaultValue="account" className="w-fit max-w-screen-md">
     <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">TATについて</TabsTrigger>
+        <TabsTrigger value="account">実施について</TabsTrigger>
         <TabsTrigger value="password">始める</TabsTrigger>
     </TabsList>
     <TabsContent value="account">
@@ -57,8 +57,7 @@ return (
             <CardTitle className="text-start">注意点</CardTitle>
             <CardDescription className="text-start">
                 <br />
-                ・一枚目の絵は男性は左、女性は右の絵について言及して下さい。<br />
-                <br />
+                ・特に指示のない限り、default-imgを選択してください。<br />
                 ・ブラウザをリロードすると、入力した内容は消えてしまいます。<br />
             </CardDescription>
         </CardHeader>
