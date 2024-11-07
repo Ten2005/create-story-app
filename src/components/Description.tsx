@@ -68,13 +68,13 @@ return (
         <CardHeader>
             <CardTitle>始める前に</CardTitle>
             <CardDescription className="text-start">
-            ニックネームを入力してください。<br />
-            ただし、これはユーザーを一意的に識別するためのもので、作成された物語と個人を結びつけることはありません。
+            名前を入力してください。<br />
+            ただし、漢字で入力し空白は入れないでください。
             </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
             <div className="space-y-1">
-            <Label htmlFor="current">ニックネーム</Label>
+            <Label htmlFor="current">名前</Label>
             <Input id="current" type="text" value={nickname} onChange={handleInputChange}/>
             </div>
         </CardContent>
