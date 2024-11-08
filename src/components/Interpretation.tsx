@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import '../index.css'
 import '../App.css'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = "https://lzvspiadsxritlgcrcui.supabase.co"
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6dnNwaWFkc3hyaXRsZ2NyY3VpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk1OTM1ODUsImV4cCI6MjA0NTE2OTU4NX0.n4VWiDpk0Egh3fiPzc5EuUDnNbzhLqFHt3EhXbxzIHY"
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 interface InterpretationProps {
     setState: (state: string) => void
@@ -42,36 +47,59 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname,isOri
     const [interpretations, setInterpretations] = React.useState<string[]>([])
     const [currentImage, setCurrentImage] = React.useState(0)
     const usedImages = isOriginal ? tatmagesOriginal : tatImages;
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     setInterpretations([...interpretations, interpretation]);
+    //     if (currentImage === usedImages.length - 1) {
+    //         const baseURL = process.env.NODE_ENV === 'production'
+    //             ? 'https://artinnovation-6c8774b7024e.herokuapp.com'
+    //             : 'http://127.0.0.1:8000';
+    //         fetch(`${baseURL}/saveTATData`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 nickname: nickname,
+    //                 interpretations: [...interpretations, interpretation],
+    //             }),
+    //         }).then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             console.log('Success:', response);
+    //         }).catch(error => {
+    //             console.error('Error', error);
+    //         });
+    //         setState('end');
+    //     }
+
+    //     setCurrentImage(prev => prev + 1);
+    //     setInterpretation('');
+
+    // }
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setInterpretations([...interpretations, interpretation]);
+        // TATと接続する時の処理
         if (currentImage === usedImages.length - 1) {
-            const baseURL = process.env.NODE_ENV === 'production'
-                ? 'https://artinnovation-6c8774b7024e.herokuapp.com'
-                : 'http://127.0.0.1:8000';
-            fetch(`${baseURL}/saveTATData`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    nickname: nickname,
-                    interpretations: [...interpretations, interpretation],
-                }),
-            }).then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log('Success:', response);
-            }).catch(error => {
-                console.error('Error', error);
-            });
+            const { data, error } = await supabase
+            .from('tat_basic')
+            .insert([
+                {nickname:nickname,
+                interpretations:interpretations,
+                } // 保存するデータを指定
+            ])
+
+            if (error) {
+                console.error('Error inserting data:', error)
+            } else {
+                console.log('Data inserted:', data)
+            }
             setState('end');
         }
-
         setCurrentImage(prev => prev + 1);
         setInterpretation('');
-
     }
     React.useEffect(() => {
         window.scrollTo(0, 0);
