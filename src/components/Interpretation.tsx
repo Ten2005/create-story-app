@@ -80,14 +80,15 @@ const Interpretation: React.FC<InterpretationProps> = ({ setState,nickname,isOri
     // }
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setInterpretations([...interpretations, interpretation]);
+        const updatedInterpretations = [...interpretations, interpretation];
+        setInterpretations(updatedInterpretations);
         // TATと接続する時の処理
         if (currentImage === usedImages.length - 1) {
             const { data, error } = await supabase
             .from('tat_basic')
             .insert([
                 {nickname:nickname,
-                interpretations:interpretations,
+                interpretations:updatedInterpretations,
                 } // 保存するデータを指定
             ])
 
